@@ -10,6 +10,8 @@ systemctl start php-fpm.service 开机启动
 查看一下php拓展：
 php -m
 查看php版本
+启动php-fpm
+/usr/sbin/php-fpm
 
 MYSQL
 CentOS7以上的版本采用mariadb替代了MySQL，因此安装mariadb。 
@@ -17,3 +19,13 @@ CentOS7以上的版本采用mariadb替代了MySQL，因此安装mariadb。
 systemctl start mariadb.service 
 mysql_secure_installation 
 
+mysql 开启远程连接
+ 
+mysql -uusername -ppwd
+use mysql 
+update mysql.user set Host='%' where HOST='localhost' and User='root';
+flush privileges;
+
+修改root密码
+mysql> use mysql; 
+mysql> update user set password=password('new_password') where user='root'; 
