@@ -104,3 +104,18 @@ systemctl restart firewalld.service
 移除服务
 
 # firewall-cmd --zone=work --remove-service=smtp
+
+
+
+linux开启80端口
+查看已经开启的端口netstat -anp
+
+修改/etc/sysconfig/iptables文件，增加如下一行：　　
+
+-A INPUT -m state –state NEW -m tcp -p tcp –dport 22 -j ACCEPT 
+-A INPUT -m state –state NEW -m tcp -p tcp –dport 80 -j ACCEPT 
+-A INPUT -m state –state NEW -m tcp -p tcp –dport 3306 -j ACCEPT 
+
+重启 iptables
+
+service iptables restart
