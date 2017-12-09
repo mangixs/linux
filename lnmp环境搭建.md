@@ -16,6 +16,7 @@ php -m
 MYSQL
 CentOS7以上的版本采用mariadb替代了MySQL，因此安装mariadb。 
 安装mariadb服务 yum install mariadb mariadb-server mariadb-devel 
+systemctl enable mariadb.service
 systemctl start mariadb.service 
 mysql_secure_installation 
 
