@@ -41,4 +41,3 @@ fsck 磁盘检查
 dump  备份 
 restore 恢复
 rpm -qa | grep name; 查看诺软件是否安装
-INSERT INTO `door`.`user` (`id`, `user_name`, `nick_name`, `true_name`, `head_img`, `sex`, `nation_id`, `birthday`, `live_area`, `citizen_code`, `citizen_prove_img`, `pwd`, `phone`, `email`, `liver`, `valid`, `login_session_id`) VALUES ('2456', 'user201707150912', '', 'wx', '', '男', '1', '0000-00-00', NULL, '', '', 'E10ADC3949BA59ABBE56E057F20F883E', '15277202459', '', '0', '1', '');
