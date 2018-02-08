@@ -119,3 +119,24 @@ make install ＃安装源代码＃
 ＃make uninstall 
 
 有些软件包的源代码编译安装后可以用make uninstall命令卸载。如果不提供此功能，则软件的卸载必须手动删除。由于软件可能将文件分散地安装在系统的多个目录中，往往很难把它删除干净，应该在编译前进行配置。
+
+因为Linux安装软件的方式比较多，所以没有一个通用的办法能查到某些软件是否安装了。总结起来就是这样几类：
+
+1、rpm包安装的，可以用rpm -qa看到，如果要查找某软件包是否安装，用 rpm -qa | grep “软件或者包的名字”。
+
+[root@hexuweb102 ~] rpm -qa | grep ruby
+
+2、以deb包安装的，可以用dpkg -l能看到。如果是查找指定软件包，用dpkg -l | grep “软件或者包的名字”；
+
+[root@hexuweb102~]dpkg-l|grepruby
+
+3、yum方法安装的，可以用yum list installed查找，如果是查找指定包，命令后加 | grep “软件名或者包名”；
+
+[root@hexuweb102 ~] yum list installed | grep ruby
+
+ 
+4、如果是以源码包自己编译安装的，例如.tar.gz或者tar.bz2形式的，这个只能看可执行文件是否存在了，
+
+上面两种方法都看不到这种源码形式安装的包。如果是以root用户安装的，可执行程序通常都在/sbin:/usr/bin目录下。
+
+说明：其中rpm yum 是Redhat系linux的软件包管理命令，dpkg是debian系列的软件包管理命令

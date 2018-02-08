@@ -1,28 +1,28 @@
 <?php
-#下载对应当前系统版本的nginx包(package)
-# wget  http://nginx.org/packages/centos/7/noarch/RPMS/nginx-release-centos-7-0.el7.ngx.noarch.rpm
-#建立nginx的yum仓库
-# rpm -ivh nginx-release-centos-7-0.el7.ngx.noarch.rpm
-#下载并安装nginx
-# yum install nginx
-#启动nginx服务
-#systemctl start nginx
+// 下载对应当前系统版本的nginx包(package)
+// wget  http://nginx.org/packages/centos/7/noarch/RPMS/nginx-release-centos-7-0.el7.ngx.noarch.rpm
+// 建立nginx的yum仓库
+// rpm -ivh nginx-release-centos-7-0.el7.ngx.noarch.rpm
+// 下载并安装nginx
+// yum install nginx
+// 启动nginx服务
+// systemctl start nginx
 #
 #新建文件夹，复制下载window版nginx文件到文件夹，双击nginx.exe就安装成功了
 #访问loaclhost出现欢迎页就表示安装成功了；
 
 #nginx.conf配置
-#location / {
-#        root   D:\www; //web站点目录
-#        index  index.html index.htm index.php;
-#    }
-#location ~ \.php$ { //接入php解析
-#        root           D:\www;
-#        fastcgi_pass   127.0.0.1:9000;
-#        fastcgi_index  index.php;
-#        fastcgi_param  SCRIPT_FILENAME  $document_root$fastcgi_script_name;
-#        include        fastcgi_params;
-#    }    
+// location / {
+//        root   D:\www; //web站点目录
+//        index  index.html index.htm index.php;
+//    }
+// location ~ \.php$ { //接入php解析
+//        root           D:\www;
+//        fastcgi_pass   127.0.0.1:9000;
+//        fastcgi_index  index.php;
+//        fastcgi_param  SCRIPT_FILENAME  $document_root$fastcgi_script_name;
+//        include        fastcgi_params;
+//    }    
 
 #隐藏index.php
 #location / {
@@ -64,3 +64,6 @@
 #echo Stopping PHP FastCGI...
 #taskkill /F /IM php-cgi.exe > nul
 #exit
+
+#nginx -t
+#如果返回ok,用  -s reload 重新加载配置文件

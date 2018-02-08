@@ -41,3 +41,4 @@ fsck 磁盘检查
 dump  备份 
 restore 恢复
 rpm -qa | grep name; 查看诺软件是否安装
+passwd 修改用户密码

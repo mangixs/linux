@@ -33,7 +33,7 @@ systemctl restart firewalld.service
 
 禁用：# systemctl stop firewalld
 
- 
+ 查看所有打开的端口： firewall-cmd--zone=public --list-ports
 
 2、配置firewalld
 
