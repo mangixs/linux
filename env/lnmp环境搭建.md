@@ -5,7 +5,7 @@ wget  http://nginx.org/packages/centos/7/noarch/RPMS/nginx-release-centos-7-0.el
 建立nginx的yum仓库
 rpm -ivh nginx-release-centos-7-0.el7.ngx.noarch.rpm
 下载并安装nginx
-yum install nginx
+yum -y install nginx
 启动nginx服务
 systemctl start nginx.service
 开机启动
@@ -16,11 +16,11 @@ PHP7.0
 执行下面的命令升级软件仓库
 rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
 rpm -Uvh https://mirror.webtatic.com/yum/el7/webtatic-release.rpm
-yum install php70w-common php70w-fpm php70w-opcache php70w-gd php70w-mysqlnd php70w-mbstring php70w-pecl-redis php70w-pecl-memcached php70w-devel
+yum -y install php70w-common php70w-fpm php70w-opcache php70w-gd php70w-mysqlnd php70w-mbstring php70w-pecl-redis php70w-pecl-memcached php70w-devel
 
 systemctl enable php-fpm.service 
 开机启动
-systemctl stat php-fpm.service
+systemctl start php-fpm.service
 查看一下php拓展：
 php -m
 查看php版本
@@ -51,7 +51,7 @@ nginx解析php
 MYSQL
 CentOS7以上的版本采用mariadb替代了MySQL，因此安装mariadb。 
 安装mariadb服务 
-yum install mariadb mariadb-server mariadb-devel 
+yum -y install mariadb mariadb-server mariadb-devel 
 systemctl enable mariadb.service 
 开机启动
 systemctl start mariadb.service 
@@ -60,9 +60,9 @@ mysql_secure_installation
 
 mysql 开启远程连接
  
-mysql -uusername -ppwd
+mysql -u username -p pwd
 use mysql 
-update mysql.user set Host='%' where HOST='localhost' and User='root';
+grant all privileges on *.* to username @'%' identified by 'password';
 flush privileges;
 
 修改root密码
