@@ -27,13 +27,20 @@ php -m
 启动php-fpm
 /usr/sbin/php-fpm
 
+Linux下全局安装composer方法
+//下载composer
+curl -sS https://getcomposer.org/installer | php
+
+//将composer.phar文件移动到bin目录以便全局使用composer命令
+mv composer.phar /usr/local/bin/composer
+
 nginx解析php
 在service中加入{
-	location ~* \.(jpg|jpeg|gif|png|css|js|ico|xml)$ {
+<!-- 	location ~* \.(jpg|jpeg|gif|png|css|js|ico|xml)$ {
 	    access_log        off;
 	    log_not_found     off;
 	    expires           360d;
-	}
+	} -->
 	location ~ \.php$ {
 	        root           /usr/share/nginx/html;
 	        fastcgi_pass   127.0.0.1:9000;
@@ -46,6 +53,9 @@ nginx解析php
 	    log_not_found off;
 	    deny all;
 	}
+	在root 下加
+	try_files $uri $uri/ /index.php?$query_string;
+	路由改写
 }
 
 MYSQL
