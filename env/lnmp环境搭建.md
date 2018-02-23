@@ -13,11 +13,12 @@ systemctl enable nginx.service
 
 
 PHP7.0
+安装php组件
+yum -y install libmcrypt libmcrypt-devel  autoconf  freetype gd jpegsrc libmcrypt libpng libpng-devel libjpeg libxml2 libxml2-devel zlib curl curl-devel
 执行下面的命令升级软件仓库
 rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
 rpm -Uvh https://mirror.webtatic.com/yum/el7/webtatic-release.rpm
-yum -y install php70w-common php70w-fpm php70w-opcache php70w-gd php70w-mysqlnd php70w-mbstring php70w-pecl-redis php70w-pecl-memcached php70w-devel
-
+yum -y install php70w-common php70w-fpm php70w-opcache php70w-gd php70w-mysqlnd php70w-mbstring php70w-pecl-redis php70w-pecl-memcached php70w-devel  php70w-cli  php70w-imap php70w-ldap php70w-odbc php70w-pear php70w-xml php70w-xmlrpc  php70w-mcrypt  php70w-snmp php70w-soap
 systemctl enable php-fpm.service 
 开机启动
 systemctl start php-fpm.service
@@ -33,6 +34,9 @@ curl -sS https://getcomposer.org/installer | php
 
 //将composer.phar文件移动到bin目录以便全局使用composer命令
 mv composer.phar /usr/local/bin/composer
+
+中国镜像
+composer config -g repo.packagist composer https://packagist.phpcomposer.com
 
 nginx解析php
 在service中加入{
@@ -79,7 +83,8 @@ flush privileges;
 mysql> use mysql; 
 mysql> update user set password=password('root') where user='root'; 
 
-
+开机启动防火墙
+systemctl enable firewalld.service 
 重启防火墙
 systemctl restart firewalld.service 
 开启80端口
@@ -96,4 +101,3 @@ firewall-cmd --add-service=ftp 开放ftp服务
 
 查看所有打开的端口： firewall-cmd --zone=public --list-ports
 更新防火墙规则：# firewall-cmd --reload
-centost@QWE123 ftpuser
