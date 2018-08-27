@@ -1,3 +1,14 @@
+查看linux内核信息 uname -a
+vin /ect/os-release
+
+查看某个软件是否启动 ps -ef | grep name
+
+查看所有监听的端口
+netstat -anp
+//查看所有80端口使用情况·
+
+netstat -nlp |grep 80   
+
 安装必要的支持库
 yum -y install gcc gcc-c++ wget make automake autoconf libtool libxml2-devel libxslt-devel perl-devel perl-ExtUtils-Embed pcre-devel openssl-devel
 下载对应当前系统版本的nginx包(package)
@@ -82,6 +93,14 @@ flush privileges;
 修改root密码
 mysql> use mysql; 
 mysql> update user set password=password('root') where user='root'; 
+
+新增一个用户远程访问
+grant all privileges on *.* to 创建的用户名 @"%" identified by "密码";
+
+flush privileges;
+新增一个用户具有对student数据库访问权限
+grant all privileges on student.* to test3@localhost identified by ’123456′;
+flush privileges;
 
 开机启动防火墙
 systemctl enable firewalld.service 
